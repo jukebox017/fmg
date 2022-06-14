@@ -1,26 +1,43 @@
-let express = require('express');
-let { graphqlHTTP } = require('express-graphql');
-let { buildSchema } = require('graphql');
+import express from 'express';
+import bodyParser from 'body-parser';
+import { graphqlHTTP } from 'express-graphql';
+import { buildSchema } from 'graphql';
+import tracks from './data/tracks.json';
 
-// Construct a schema, using GraphQL schema language
-let schema = buildSchema(`
+const schema = buildSchema(`
   type Query {
-    hello: String
+    track(id: Int): Track
+    tracks: [Track]
+  },
+  type Track {
+    title: String
+    artist: String
+    genre: String
+    duration: Int
   }
 `);
 
-// The root provides a resolver function for each API endpoint
-let root = {
-  hello: () => {
-    return 'Hello world!';
-  },
-};
+const getTrack = ({ id }: { id: number}) => {
+  return tracks[id];
+}
 
-let app = express();
+const getTracks = () => {
+  return tracks;
+}
+
+const root = {
+  track: getTrack,
+  tracks: getTracks,
+}
+
+const app = express();
+app.use(bodyParser.json());
+
 app.use('/graphql', graphqlHTTP({
   schema: schema,
   rootValue: root,
   graphiql: true,
 }));
+
 app.listen(4000);
 console.log('Running a GraphQL API server at http://localhost:4000/graphql');

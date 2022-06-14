@@ -5,6 +5,8 @@ services:
       dockerfile: Dockerfile
     ports:
       - 4000:4000
+    volumes:
+      - ./src:/usr/app/src
   web:
     build:
       context: web
