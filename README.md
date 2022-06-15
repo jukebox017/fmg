@@ -9,6 +9,6 @@
 
 ### NPM scripts
 
-- `cd ./api && npm start`
-- `cd ./web && npm start`
+- `cd ./api && npm install && npm start`
+- `cd ./web && npm install && npm start`
 - UI available at `localhost:3000`, API at `localhost:4000/graphql`

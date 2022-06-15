@@ -1,4 +1,6 @@
-import React from "react";
+import { MusicNote } from '@mui/icons-material';
+import { Avatar, List, ListItem, ListItemAvatar } from '@mui/material';
+import React from 'react';
 
 interface Track {
   title: string;
@@ -13,14 +15,17 @@ interface Props {
 
 export const Tracks: React.FC<Props> = ({ tracks }) => {
   return (
-    <ul>
-      { tracks.map(t => {
-        return (
-          <li>
-            <strong>{t.artist}</strong> - {t.title}
-          </li>
-        )
-      })}
-    </ul>
-  )
-}
+    <List>
+      {tracks.map((t, i) => (
+        <ListItem key={i}>
+          <ListItemAvatar>
+            <Avatar>
+              <MusicNote></MusicNote>
+            </Avatar>
+          </ListItemAvatar>
+          {t.artist} - {t.title}
+        </ListItem>
+      ))}
+    </List>
+  );
+};
