@@ -1,5 +1,6 @@
 import express from 'express';
 import bodyParser from 'body-parser';
+import cors from 'cors';
 import { graphqlHTTP } from 'express-graphql';
 import { buildSchema } from 'graphql';
 import tracks from './data/tracks.json';
@@ -31,6 +32,7 @@ const root = {
 }
 
 const app = express();
+app.use(cors());
 app.use(bodyParser.json());
 
 app.use('/graphql', graphqlHTTP({

@@ -6,10 +6,12 @@ services:
     ports:
       - 4000:4000
     volumes:
-      - ./src:/usr/app/src
+      - ./src:/usr/api/src
   web:
     build:
       context: web
       dockerfile: Dockerfile
     ports:
       - 3000:3000
+    volumes:
+      - ./src:/usr/web/src
