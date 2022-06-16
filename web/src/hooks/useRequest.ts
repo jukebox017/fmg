@@ -19,3 +19,20 @@ export const useTracks = () => {
     return tracks;
   });
 };
+
+export const useTrack = (trackId: string | undefined) => {
+  return useQuery(['track', trackId], async () => {
+    const { track } = await graphQLClient.request(gql`
+    {
+      track(id: ${trackId}) {
+        title
+        artist
+        genre
+        duration
+      }
+    }
+    `);
+
+    return track;
+  });
+};
