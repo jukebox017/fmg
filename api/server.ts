@@ -4,6 +4,7 @@ import cors from 'cors';
 import { graphqlHTTP } from 'express-graphql';
 import { buildSchema } from 'graphql';
 import tracks from './data/tracks.json';
+import path from 'path';
 
 const schema = buildSchema(`
   type Query {
@@ -48,6 +49,13 @@ app.get('/best-song', async (req, res) => {
   );
 
   res.send(enc.decode(arr));
+});
+
+app.use(express.static('public'));
+app.use(express.static(path.join(__dirname, '..', '..', 'web', 'build')));
+
+app.get('/', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', '..', 'web', 'build', 'index.html'))
 });
 
 app.listen(4000);

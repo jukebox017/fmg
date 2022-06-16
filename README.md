@@ -8,13 +8,12 @@
 
 ## Running the app
 
-### Using Docker
-
-- Run `./dc.sh`
-- UI available at `localhost:3000`, API at `localhost:4000/graphql`
-
 ### Using NPM scripts
 
 - `cd ./api && npm install && npm start`
-- `cd ./web && npm install && npm start`
+- UI available at `localhost:4000`, API at `localhost:4000/graphql`
+
+### Using Docker
+
+- Run `./dc.sh`
 - UI available at `localhost:3000`, API at `localhost:4000/graphql`
