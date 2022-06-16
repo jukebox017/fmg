@@ -18,6 +18,7 @@ root.render(
         <Routes>
           <Route path="/" element={<App />} />
           <Route path="track/:trackId" element={<TrackDetail />} />
+          <Route path="*" element={<App />} />
         </Routes>
       </BrowserRouter>
     </QueryClientProvider>

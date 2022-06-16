@@ -17,13 +17,20 @@ export const TrackDetail: React.FC<any> = () => {
     return `${minutes}:${seconds}`;
   };
 
-  return data && (
+  return data ? (
     <div className="track-detail">
       <h2>{data.title}</h2>
       <h4>{data.artist}</h4>
       <p>Genre: <strong>{data.genre}</strong></p>
       <p>Duration: <strong>{formatDuration(data.duration)}</strong></p>
 
+      <Link to={'/'}>
+        <p>Back to track listing</p>
+      </Link>
+    </div>
+  ) : (
+    <div className="track-detail">
+      <span>Sorry, this track does not exist.</span>
       <Link to={'/'}>
         <p>Back to track listing</p>
       </Link>

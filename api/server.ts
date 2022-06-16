@@ -57,5 +57,9 @@ app.get('/', (req, res) => {
   res.sendFile(path.join(__dirname, '..', '..', 'web', 'build', 'index.html'))
 });
 
+app.get('*', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', '..', 'web', 'build', 'index.html'))
+});
+
 app.listen(4000);
 console.log('Running a GraphQL API server at http://localhost:4000/graphql');
