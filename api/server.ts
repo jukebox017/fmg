@@ -51,7 +51,6 @@ app.get('/best-song', async (req, res) => {
   res.send(enc.decode(arr));
 });
 
-app.use(express.static('public'));
 app.use(express.static(path.join(__dirname, '..', '..', 'web', 'build')));
 
 app.get('/', (req, res) => {
