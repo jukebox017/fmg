@@ -1,4 +1,5 @@
-# FMG UI
+# UI
 
+- Install dependencies: `npm install`
 - Run the app: `npm start`
-- Go to `localhost:3000`
+- UI is available at `localhost:3000`
